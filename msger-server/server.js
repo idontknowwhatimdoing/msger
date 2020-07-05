@@ -3,16 +3,22 @@ const PORT = 1337;
 let clients = [];
 
 const server = net.createServer((client) => {
-	console.log("new connection : ", client.remoteAddress + ":" + client.remotePort);
+	console.log(
+		"new connection : ",
+		client.remoteAddress + ":" + client.remotePort
+	);
 	clients.push(client);
 
 	client.on("data", (data) => {
-		console.log("data recieved");
+		console.log("data recieved :", data.toString());
 		for (const c of clients) c.write(data);
 	});
 
 	client.on("end", () => {
-		console.log(client.remoteAddress + ":" + client.remotePort, "disconnected");
+		console.log(
+			client.remoteAddress + ":" + client.remotePort,
+			"disconnected"
+		);
 		clients.splice(clients.indexOf(client), 1);
 	});
 });
