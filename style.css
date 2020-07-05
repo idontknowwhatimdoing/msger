@@ -24,29 +24,40 @@ body::-webkit-scrollbar-thumb {
 }
 
 input {
+	height: 5vh;
+	font-size: 3vw;
+	padding: 15px;
+	text-align: center;
+	background: #40444b;
+	color: #dcddd9;
+	border-radius: 50px;
+	border-style: solid;
+	border-color: #fb8122;
+	border-width: 3px;
+	outline: none;
+}
+
+#msg_input {
 	position: fixed;
 	left: 50%;
 	top: 0;
-	width: 95%;
-	height: 3vh;
-	font-size: 3vw;
+	width: 85%;
 	margin: 25px 0px;
-	padding: 15px;
-	background: #40444b;
-	color: #dcddd9;
-	border-radius: 30px;
-	border-style: solid;
-	border-color: #fb8122;
-	border-width: 4px;
-	outline: none;
 	-moz-transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
 }
 
+#username_input {
+	display: block;
+	width: 60%;
+	margin: 0px auto 25px;
+}
+
 .msg {
+	overflow-wrap: break-word;
 	background: #40444b;
 	margin: 35px 150px;
-	padding: 25px 0px;
+	padding: 25px 15px;
 	border-radius: 15px;
 }
