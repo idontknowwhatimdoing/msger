@@ -12,8 +12,7 @@ function createWindow() {
 
 	// and load the index.html of the app.
 	win.loadFile("index.html");
-	win.webContents.openDevTools();
-	// win.removeMenu();
+	win.removeMenu();
 }
 
 // This method will be called when Electron has finished
