@@ -16,7 +16,7 @@ function send_message(e) {
 const net = require("net");
 const { Buffer } = require("buffer");
 const PORT = 1337;
-const HOST = "localhost";
+const HOST = "192.168.0.43";
 const client = net.createConnection(PORT, HOST, () => console.log("client connected"));
 
 const last_div = document.getElementById("last_div");
@@ -27,4 +27,3 @@ let username = sessionStorage.getItem("username");
 input.onkeydown = send_message;
 client.on("data", (data) => display_message(JSON.parse(data.toString())));
 client.on("end", () => console.log("disconnected from server"));
-console.log("username :", username);

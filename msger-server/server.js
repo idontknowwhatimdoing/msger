@@ -18,4 +18,4 @@ const server = net.createServer((client) => {
 });
 
 server.on("error", (err) => console.error(err));
-server.listen(PORT, () => console.log("server listening on port ", PORT, "..."));
+server.listen(PORT, () => console.log("server listening on port", PORT, "..."));
