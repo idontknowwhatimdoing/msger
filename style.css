@@ -1,0 +1,52 @@
+body {
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	font-size: 4vw;
+	color: #dcddd9;
+	background: #202225;
+	margin-top: 150px;
+}
+body::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: #202225;
+}
+
+body::-webkit-scrollbar {
+	width: 10px;
+	background-color: #202225;
+}
+
+body::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #40444b;
+}
+
+input {
+	position: fixed;
+	left: 50%;
+	top: 0;
+	width: 95%;
+	height: 3vh;
+	font-size: 3vw;
+	margin: 25px 0px;
+	padding: 10px;
+	background: #40444b;
+	color: #dcddd9;
+	border-radius: 30px;
+	border-style: solid;
+	border-color: #fb8122;
+	border-width: 4px;
+	outline: none;
+	-moz-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.msg {
+	background: #40444b;
+	margin: 35px 150px;
+	padding: 25px 0px;
+	border-radius: 15px;
+}
