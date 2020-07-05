@@ -13,8 +13,8 @@ function send_message(e) {
 	}
 }
 
-const net = require("net");
 const { Buffer } = require("buffer");
+const net = require("net");
 const PORT = 1337;
 const HOST = "192.168.0.43";
 const client = net.createConnection(PORT, HOST, () => console.log("client connected"));
