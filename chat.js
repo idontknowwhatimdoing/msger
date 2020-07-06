@@ -26,8 +26,6 @@ client.on("data", (data) => {
 	console.log("reading :", client.bytesRead);
 	display_message(JSON.parse(data.toString()));
 });
-client.on("drain", (e) => {
-	if (e) console.log("something went wrong ...");
-	else console.log("drain event emited");
-});
+client.on("drain", (e) => console.log("drain event\nerror :", e));
+client.on("error", (e) => console.log("error :", e));
 client.on("end", () => console.log("disconnected from server"));
