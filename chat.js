@@ -9,6 +9,7 @@ function send_message(e) {
 	if (e.code === "Enter" && input.value !== "") {
 		let buf = Buffer.from(JSON.stringify({ content: input.value, author: username }));
 		client.write(buf);
+		console.log(client.bytesWritten);
 		buf = null;
 		input.value = "";
 	}
