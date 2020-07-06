@@ -9,7 +9,7 @@ function send_message(e) {
 	if (e.code === "Enter" && input.value !== "") {
 		let buf = Buffer.from(JSON.stringify({ content: input.value, author: username }));
 		client.write(buf);
-		console.log(client.bytesWritten);
+		console.log("writing :", client.bytesWritten);
 		buf = null;
 		input.value = "";
 	}
@@ -24,7 +24,7 @@ let username = sessionStorage.getItem("username");
 
 input.onkeydown = send_message;
 client.on("data", (data) => {
-	console.log(client.bytesRead);
+	console.log("reading :", client.bytesRead);
 	display_message(JSON.parse(data.toString()));
 });
 client.on("end", () => console.log("disconnected from server"));
