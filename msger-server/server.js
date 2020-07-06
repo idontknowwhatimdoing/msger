@@ -9,7 +9,8 @@ const server = net.createServer((client) => {
 	client.on("data", (data) => {
 		console.log(client.remoteAddress, ":", data.toString());
 		for (const c of clients) {
-			c.write(data);
+			if (c.write(data)) console.log("ok");
+			else console.log("not ok");
 			console.log(c.bytesWritten);
 		}
 	});

@@ -9,11 +9,11 @@ function send_message(e) {
 	if (e.code === "Enter" && input.value !== "") {
 		let buf = Buffer.from(JSON.stringify({ content: input.value, author: username }));
 		client.write(buf);
+		buf = null;
 		input.value = "";
 	}
 }
 
-const { Buffer } = require("buffer");
 const net = require("net");
 const PORT = 1337;
 const HOST = "192.168.0.43";
