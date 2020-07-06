@@ -10,7 +10,6 @@ function send_message(e) {
 		let buf = Buffer.from(JSON.stringify({ content: input.value, author: username }));
 		client.write(buf);
 		console.log("writing :", client.bytesWritten);
-		buf = null;
 		input.value = "";
 	}
 }
@@ -26,5 +25,9 @@ input.onkeydown = send_message;
 client.on("data", (data) => {
 	console.log("reading :", client.bytesRead);
 	display_message(JSON.parse(data.toString()));
+});
+client.on("drain", (e) => {
+	if (e) console.log("something went wrong ...");
+	else console.log("drain event emited");
 });
 client.on("end", () => console.log("disconnected from server"));
