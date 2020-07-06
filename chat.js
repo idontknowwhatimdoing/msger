@@ -8,8 +8,10 @@ function display_message(msg) {
 function send_message(e) {
 	if (e.code === "Enter" && input.value !== "") {
 		let buf = Buffer.from(JSON.stringify({ content: input.value, author: username }));
+		console.log(buf);
 		client.write(buf);
 		buf = null;
+		console.log(buf);
 		input.value = "";
 	}
 }
