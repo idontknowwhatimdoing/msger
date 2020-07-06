@@ -26,7 +26,7 @@ let username = sessionStorage.getItem("username");
 
 input.onkeydown = send_message;
 client.on("data", (data) => {
-	client.bytesRead;
+	console.log(client.bytesRead);
 	display_message(JSON.parse(data.toString()));
 });
 client.on("end", () => console.log("disconnected from server"));
