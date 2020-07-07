@@ -10,7 +10,7 @@ function createWindow() {
 		},
 	});
 
-	win.loadFile("login.html");
+	win.loadFile("public/login.html");
 	win.webContents.openDevTools();
 	win.removeMenu();
 }
