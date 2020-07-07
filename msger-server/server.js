@@ -9,7 +9,9 @@ const server = net.createServer((client) => {
 	console.log("new connection : ", client.remoteAddress + ":" + client.remotePort);
 	clients.push(client);
 
-	for (const c in clients) client.pipe(c);
+	clients.map((c) => {
+		if (c !== client) c.pipe(client);
+	});
 
 	client.on("data", (data) => {
 		console.log(client.remoteAddress + ":" + client.remotePort, ":", data.toString());
@@ -24,5 +26,5 @@ const server = net.createServer((client) => {
 	});
 });
 
-server.on("error", (err) => console.error(err));
+server.on("error", (err) => console.error("error :", err));
 server.listen(PORT, HOST, () => console.log("server listening on port", PORT, "..."));
