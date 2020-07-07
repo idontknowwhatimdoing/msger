@@ -1,6 +1,6 @@
 const net = require("net");
 const PORT = 1337;
-const HOST = "192.168.0.43";
+const HOST = "192.168.0.21";
 let clients = [];
 
 const server = net.createServer((client) => {

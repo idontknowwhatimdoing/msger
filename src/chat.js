@@ -16,7 +16,7 @@ function send_message(e) {
 
 const net = require("net");
 const PORT = 1337;
-const HOST = "192.168.0.43";
+const HOST = "192.168.0.21";
 const client = net.createConnection(PORT, HOST, () => console.log("client connected"));
 const input = document.getElementById("msg_input");
 let username = sessionStorage.getItem("username");
