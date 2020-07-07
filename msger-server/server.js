@@ -1,5 +1,6 @@
 const net = require("net");
 const PORT = 1337;
+const HOST = "192.168.0.43";
 let clients = [];
 
 const server = net.createServer((client) => {
@@ -22,4 +23,4 @@ const server = net.createServer((client) => {
 });
 
 server.on("error", (err) => console.error(err));
-server.listen(PORT, () => console.log("server listening on port", PORT, "..."));
+server.listen(PORT, HOST, () => console.log("server listening on port", PORT, "..."));
