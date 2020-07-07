@@ -9,13 +9,13 @@ const server = net.createServer((client) => {
 	console.log("new connection : ", client.remoteAddress + ":" + client.remotePort);
 	clients.push(client);
 
+	for (const c in clients) client.pipe(c);
+
 	client.on("data", (data) => {
 		console.log(client.remoteAddress + ":" + client.remotePort, ":", data.toString());
 		console.log("reading :", client.bytesRead);
-		for (const c of clients) {
-			c.write(data);
-			console.log("writing :", c.bytesWritten);
-		}
+		client.write(data);
+		console.log("writing :", client.bytesWritten);
 	});
 
 	client.on("end", () => {
