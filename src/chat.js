@@ -1,3 +1,5 @@
+"use strict";
+
 function display_message(msg) {
 	let msg_div = document.createElement("div");
 	msg_div.innerText = msg.author + " : " + msg.content;
