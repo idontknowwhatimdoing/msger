@@ -16,6 +16,7 @@ function send_message(e) {
 	}
 }
 
+const { Buffer } = require("buffer");
 const net = require("net");
 const PORT = 1337;
 const HOST = "192.168.0.21";
