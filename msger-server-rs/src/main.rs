@@ -30,10 +30,10 @@ fn handle_client(mut client: TcpStream, clients: Vec<TcpStream>) -> std::io::Res
 
 fn main() -> std::io::Result<()> {
 	let mut clients = Vec::new();
-	let serv = TcpListener::bind("localhost:1234")?;
-	println!("listening on {} ...", serv.local_addr()?);
+	let server = TcpListener::bind("localhost:1234")?;
+	println!("server listening on {} ...", server.local_addr()?);
 
-	for client in serv.incoming() {
+	for client in server.incoming() {
 		match client {
 			Ok(client) => {
 				println!("new connection : {}", client.peer_addr()?);
@@ -43,5 +43,6 @@ fn main() -> std::io::Result<()> {
 			Err(e) => println!("error : {}", e),
 		}
 	}
+
 	Ok(())
 }

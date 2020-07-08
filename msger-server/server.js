@@ -9,15 +9,13 @@ const server = net.createServer((client) => {
 	console.log("new connection : ", client.remoteAddress + ":" + client.remotePort);
 	clients.push(client);
 
-	clients.map((c) => {
-		if (c !== client) c.pipe(client);
-	});
-
 	client.on("data", (data) => {
 		console.log(client.remoteAddress + ":" + client.remotePort, ":", data.toString());
 		console.log("reading :", client.bytesRead);
-		client.write(data);
-		console.log("writing :", client.bytesWritten);
+		for (let c of clients) {
+			c.write(data);
+			console.log("writing :", client.bytesWritten);
+		}
 	});
 
 	client.on("end", () => {
@@ -26,5 +24,7 @@ const server = net.createServer((client) => {
 	});
 });
 
-server.on("error", (err) => console.error("error :", err));
-server.listen(PORT, HOST, () => console.log("server listening on port", PORT, "..."));
+server.on("error", (e) => console.error("error :", e));
+server.listen(PORT, HOST, () =>
+	console.log("server listening on ", HOST, +":" + PORT, "...")
+);
