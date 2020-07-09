@@ -1,6 +1,7 @@
 use std::io::{Read, Write};
 use std::net::{Shutdown, TcpListener, TcpStream};
 use std::str::from_utf8;
+// use std::sync::Arc;
 use std::thread;
 
 fn handle_client(mut client: TcpStream, clients: Vec<TcpStream>) -> std::io::Result<()> {
@@ -37,7 +38,7 @@ fn main() -> std::io::Result<()> {
 		match client {
 			Ok(client) => {
 				println!("new connection : {}", client.peer_addr()?);
-				clients.push(client);
+				clients.push(client.clone());
 				thread::spawn(|| handle_client(client, clients));
 			}
 			Err(e) => println!("error : {}", e),

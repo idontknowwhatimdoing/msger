@@ -2,7 +2,7 @@
 
 const net = require("net");
 const PORT = 1337;
-const HOST = "192.168.0.21";
+const HOST = "192.168.0.43";
 let clients = [];
 
 const server = net.createServer((client) => {
@@ -17,14 +17,18 @@ const server = net.createServer((client) => {
 			console.log("writing :", client.bytesWritten);
 		}
 	});
-
 	client.on("end", () => {
 		console.log(client.remoteAddress + ":" + client.remotePort, "disconnected");
 		clients.splice(clients.indexOf(client), 1);
 	});
+	client.on("error", (e) => {
+		console.log("error :", e);
+		clients.splice(clients.indexOf(client), 1);
+	});
+	client.on("drain", () => console.log("drain event"));
 });
 
 server.on("error", (e) => console.error("error :", e));
 server.listen(PORT, HOST, () =>
-	console.log("server listening on ", HOST, +":" + PORT, "...")
+	console.log("server listening on", HOST + ":" + PORT, "...")
 );
