@@ -33,4 +33,4 @@ logout_img.onclick = logout;
 input.onkeydown = send_message;
 client.on("data", (data) => display_message(JSON.parse(data.toString())));
 client.on("error", (e) => console.error("error :", e));
-client.on("end", () => console.log("disconnected from server"));
+client.on("end", () => logout());
