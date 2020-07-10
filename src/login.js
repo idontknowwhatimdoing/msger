@@ -1,6 +1,6 @@
 "use strict";
 
-const input = document.querySelector("input");
+const input = document.querySelector("input[id='username_input']");
 
 input.onkeydown = (e) => {
 	if (e.code === "Enter" && input.value !== "") {

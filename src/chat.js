@@ -10,7 +10,7 @@ function display_message(msg) {
 	let msg_div = document.createElement("div");
 	msg_div.innerText = msg.author + " : " + msg.content;
 	msg_div.className = "msg";
-	document.body.insertBefore(msg_div, document.getElementById("last_div"));
+	document.body.insertBefore(msg_div, last_div);
 }
 
 function send_message(e) {
@@ -26,6 +26,7 @@ const net = require("net");
 const client = net.createConnection(1337, "192.168.0.43");
 const input = document.querySelector("input[id='msg_input']");
 const logout_img = document.querySelector("img[id='logout']");
+const last_div = document.querySelector("div[id='last']");
 let username = sessionStorage.getItem("username");
 
 logout_img.onclick = logout;
