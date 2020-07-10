@@ -14,6 +14,7 @@ const server = net.createServer((client) => {
 	client.on("end", () => {
 		console.log(client.remoteAddress + ":" + client.remotePort, "disconnected");
 		clients.splice(clients.indexOf(client), 1);
+		client.end();
 	});
 	client.on("error", (e) => console.log("error :", e));
 });
