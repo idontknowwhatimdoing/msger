@@ -1,7 +1,6 @@
 use std::io::{Read, Write};
 use std::net::{Shutdown, TcpListener, TcpStream};
 use std::str::from_utf8;
-// use std::sync::Arc;
 use std::thread;
 
 fn handle_client(mut client: TcpStream, clients: Vec<TcpStream>) -> std::io::Result<()> {

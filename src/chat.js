@@ -1,5 +1,10 @@
 "use strict";
 
+function logout() {
+	sessionStorage.clear();
+	document.location = "./login.html";
+}
+
 function display_message(msg) {
 	let msg_div = document.createElement("div");
 	msg_div.innerText = msg.author + " : " + msg.content;
@@ -19,9 +24,11 @@ function send_message(e) {
 const { Buffer } = require("buffer");
 const net = require("net");
 const client = net.createConnection(1337, "192.168.0.43");
-const input = document.getElementById("msg_input");
+const input = document.querySelector("#msg_input");
+const logout_img = document.querySelector("img[id='logout']");
 let username = sessionStorage.getItem("username");
 
+logout_img.onclick = logout;
 input.onkeydown = send_message;
 client.on("data", (data) => {
 	console.log("reading :", client.bytesRead);

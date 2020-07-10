@@ -32,7 +32,7 @@ input {
 	color: #dcddd9;
 	border-radius: 50px;
 	border-style: solid;
-	border-color: #fb8122;
+	border-color: #ff7b00;
 	border-width: 3px;
 	outline: none;
 }
@@ -60,4 +60,13 @@ input {
 	margin: 35px 150px;
 	padding: 25px 15px;
 	border-radius: 15px;
+}
+
+#logout {
+	position: fixed;
+	left: 20px;
+	bottom: 15px;
+}
+#logout:hover {
+	cursor: pointer;
 }
