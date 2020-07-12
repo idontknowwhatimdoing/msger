@@ -37,13 +37,21 @@ input {
 	outline: none;
 }
 
-#msg_input {
+#msg-input {
+	position: absolute;
+	left: 0%;
+	bottom: 15px;
 	width: 85%;
+	transform: translateX(-50%);
 }
 
 #pseudo_input {
 	display: block;
 	margin: 0px auto 25px;
+}
+
+.msg-list {
+	overflow: auto;
 }
 
 .msg {
@@ -68,12 +76,12 @@ input {
 	transform: translate(-50%, -50%);
 }
 
-.chat-container {
+.container {
 	display: flex;
 	align-items: stretch;
 }
 
-.msg-container {
+.chat-container {
 	flex-grow: 2;
 }
 

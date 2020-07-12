@@ -10,7 +10,7 @@ function display_message(msg) {
 	let msg_div = document.createElement("div");
 	msg_div.innerText = msg.author + " : " + msg.content;
 	msg_div.className = "msg";
-	document.body.insertBefore(msg_div, last_div);
+	msg_list.insertBefore(msg_div, last_div);
 	document.location = "./chat.html#last";
 	input.focus();
 }
@@ -26,8 +26,9 @@ function send_message(e) {
 const { Buffer } = require("buffer");
 const net = require("net");
 const client = net.createConnection(1337, "192.168.0.43");
-const input = document.querySelector("#msg_input");
+const input = document.querySelector("#msg-input");
 const logout_img = document.querySelector("#logout");
+const msg_list = document.querySelector(".msg-list");
 const last_div = document.querySelector("#last");
 let pseudo = sessionStorage.getItem("pseudo");
 
