@@ -1,10 +1,12 @@
 "use strict";
 
-const input = document.querySelector("input[id='username_input']");
-
-input.onkeydown = (e) => {
+function login(e) {
 	if (e.code === "Enter" && input.value !== "") {
-		sessionStorage.setItem("username", input.value);
+		sessionStorage.setItem("pseudo", input.value.trim());
 		document.location = "../public/chat.html";
 	}
-};
+}
+
+const input = document.querySelector("input[id='pseudo_input']");
+
+input.onkeydown = login;

@@ -11,11 +11,13 @@ function display_message(msg) {
 	msg_div.innerText = msg.author + " : " + msg.content;
 	msg_div.className = "msg";
 	document.body.insertBefore(msg_div, last_div);
+	document.location = "./chat.html#last";
+	input.focus();
 }
 
 function send_message(e) {
 	if (e.code === "Enter" && input.value !== "") {
-		let buf = Buffer.from(JSON.stringify({ content: input.value, author: username }));
+		let buf = Buffer.from(JSON.stringify({ content: input.value.trim(), author: pseudo }));
 		client.write(buf);
 		input.value = "";
 	}
@@ -27,7 +29,7 @@ const client = net.createConnection(1337, "192.168.0.43");
 const input = document.querySelector("input[id='msg_input']");
 const logout_img = document.querySelector("img[id='logout']");
 const last_div = document.querySelector("div[id='last']");
-let username = sessionStorage.getItem("username");
+let pseudo = sessionStorage.getItem("pseudo");
 
 logout_img.onclick = logout;
 input.onkeydown = send_message;

@@ -48,9 +48,8 @@ input {
 	transform: translateX(-50%);
 }
 
-#username_input {
+#pseudo_input {
 	display: block;
-	width: 60%;
 	margin: 0px auto 25px;
 }
 
@@ -67,6 +66,14 @@ input {
 	left: 10px;
 	bottom: 10px;
 }
-#logout:hover {
+
+.log_btn:hover {
 	cursor: pointer;
+}
+
+#login_div {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
