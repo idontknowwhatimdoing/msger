@@ -7,6 +7,6 @@ function login(e) {
 	}
 }
 
-const input = document.querySelector("input[id='pseudo_input']");
+const input = document.querySelector("#pseudo_input");
 
 input.onkeydown = login;

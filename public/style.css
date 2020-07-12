@@ -6,7 +6,7 @@ body {
 	font-size: 4vw;
 	color: #dcddd9;
 	background: #202225;
-	margin-top: 150px;
+	margin-top: 30px;
 }
 body::-webkit-scrollbar-track {
 	border-radius: 10px;
@@ -38,14 +38,7 @@ input {
 }
 
 #msg_input {
-	position: fixed;
-	left: 50%;
-	top: 0;
 	width: 85%;
-	margin: 25px 0px;
-	-moz-transform: translateX(-50%);
-	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%);
 }
 
 #pseudo_input {
@@ -62,12 +55,9 @@ input {
 }
 
 #logout {
-	position: fixed;
-	left: 10px;
-	bottom: 10px;
 }
 
-.log_btn:hover {
+.log-btn:hover {
 	cursor: pointer;
 }
 
@@ -76,4 +66,17 @@ input {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+.chat-container {
+	display: flex;
+	align-items: stretch;
+}
+
+.msg-container {
+	flex-grow: 2;
+}
+
+.userlist-container {
+	flex-grow: 1;
 }

@@ -26,9 +26,9 @@ function send_message(e) {
 const { Buffer } = require("buffer");
 const net = require("net");
 const client = net.createConnection(1337, "192.168.0.43");
-const input = document.querySelector("input[id='msg_input']");
-const logout_img = document.querySelector("img[id='logout']");
-const last_div = document.querySelector("div[id='last']");
+const input = document.querySelector("#msg_input");
+const logout_img = document.querySelector("#logout");
+const last_div = document.querySelector("#last");
 let pseudo = sessionStorage.getItem("pseudo");
 
 logout_img.onclick = logout;
