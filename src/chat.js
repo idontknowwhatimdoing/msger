@@ -15,11 +15,23 @@ function display_message(msg) {
 	input.focus();
 }
 
+function display_user(pseudo) {
+	let user_div = document.createElement("div");
+	user_div.innerText = pseudo;
+	user_div.className = "msg";
+	userlist.insertBefore(user_div, logout_img);
+}
+
 function send_message(e) {
 	if (e.code === "Enter" && input.value !== "") {
 		client.write(Buffer.from(JSON.stringify({ content: input.value.trim(), dest: "all" })));
 		input.value = "";
 	}
+}
+
+function handle_msg(msg) {
+	if ("pseudo" in msg) display_user(msg.pseudo);
+	else if ("content" in msg && "author" in msg) display_message(msg);
 }
 
 let pseudo = sessionStorage.getItem("pseudo");
@@ -31,10 +43,11 @@ const client = net.createConnection(1337, "192.168.0.43", () =>
 const input = document.querySelector("#msg-input");
 const logout_img = document.querySelector("#logout");
 const msg_list = document.querySelector(".msg-list");
+const userlist = document.querySelector(".userlist");
 const last_div = document.querySelector("#last");
 
 logout_img.onclick = logout;
 input.onkeydown = send_message;
-client.on("data", (data) => display_message(JSON.parse(data.toString())));
+client.on("data", (data) => handle_msg(JSON.parse(data.toString())));
 client.on("error", (e) => console.error("error :", e));
 client.on("end", () => logout());

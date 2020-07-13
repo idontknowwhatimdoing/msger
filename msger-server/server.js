@@ -10,18 +10,23 @@ function get_pseudo(client) {
 }
 
 function handle_msg(client, msg) {
-	if ("pseudo" in msg)
-		if (is_valid(msg.pseudo)) clients.push({ sock: client, pseudo: msg.pseudo });
-		else client.end();
-	else if ("content" in msg && "dest" in msg)
-		if (msg.dest === "all")
+	if ("pseudo" in msg) {
+		if (is_valid(msg.pseudo)) {
+			for (const c of clients)
+				c.sock.write(Buffer.from(JSON.stringify({ pseudo: msg.pseudo })));
+			for (const c of clients)
+				client.write(Buffer.from(JSON.stringify({ pseudo: c.pseudo })));
+			clients.push({ sock: client, pseudo: msg.pseudo });
+		} else client.end();
+	} else if ("content" in msg && "dest" in msg) {
+		if (msg.dest === "all") {
 			for (const c of clients)
 				c.sock.write(
 					Buffer.from(
 						JSON.stringify({ content: msg.content, author: get_pseudo(client) })
 					)
 				);
-		else {
+		} else {
 			for (const c of clients)
 				if (c.pseudo === msg.dest)
 					c.sock.write(
@@ -33,12 +38,7 @@ function handle_msg(client, msg) {
 				Buffer.from(JSON.stringify({ content: msg.content, author: get_pseudo(client) }))
 			);
 		}
-}
-
-function get_userlist(client) {
-	let pseudos = [];
-	for (const c of clients) if (c.sock !== client) pseudos.push(c.pseudo);
-	return pseudos;
+	}
 }
 
 const { Buffer } = require("buffer");
@@ -47,7 +47,6 @@ let clients = [];
 
 const server = net.createServer((client) => {
 	console.log("new connection : ", client.remoteAddress + ":" + client.remotePort);
-	client.write(get_userlist(client));
 
 	client.on("data", (data) => handle_msg(client, JSON.parse(data.toString())));
 	client.on("end", () => {
