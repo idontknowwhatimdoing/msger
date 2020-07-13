@@ -38,6 +38,7 @@ input {
 }
 
 #msg-input {
+	margin-top: 15px;
 	width: 85%;
 }
 
