@@ -17,20 +17,21 @@ function display_message(msg) {
 
 function send_message(e) {
 	if (e.code === "Enter" && input.value !== "") {
-		let buf = Buffer.from(JSON.stringify({ content: input.value.trim(), author: pseudo }));
-		client.write(buf);
+		client.write(Buffer.from(JSON.stringify({ content: input.value.trim(), dest: "all" })));
 		input.value = "";
 	}
 }
 
+let pseudo = sessionStorage.getItem("pseudo");
 const { Buffer } = require("buffer");
 const net = require("net");
-const client = net.createConnection(1337, "192.168.0.43");
+const client = net.createConnection(1337, "192.168.0.43", () =>
+	client.write(Buffer.from(JSON.stringify({ pseudo })))
+);
 const input = document.querySelector("#msg-input");
 const logout_img = document.querySelector("#logout");
 const msg_list = document.querySelector(".msg-list");
 const last_div = document.querySelector("#last");
-let pseudo = sessionStorage.getItem("pseudo");
 
 logout_img.onclick = logout;
 input.onkeydown = send_message;
