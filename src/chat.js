@@ -19,7 +19,7 @@ function display_message(msg) {
 	msg_div.innerText = msg.author + " : " + msg.content;
 	msg_div.className = "msg";
 	msg_list.insertBefore(msg_div, last_msg);
-	document.location = "./chat.html#last";
+	document.location = "#last";
 	input.focus();
 }
 

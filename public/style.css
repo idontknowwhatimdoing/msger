@@ -46,6 +46,10 @@ input {
 	width: 85%;
 }
 
+#pseudo-input {
+	margin-top: 20px;
+}
+
 .centered {
 	position: absolute;
 	top: 50%;
@@ -69,7 +73,7 @@ input {
 
 .msg-list::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	background-color: #40444b;
+	background-color: black;
 }
 
 .msg {
@@ -82,7 +86,7 @@ input {
 
 .user {
 	overflow-wrap: break-word;
-	background: #40444b;
+	background: #202225;
 	margin: 20px 15px;
 	padding: 25px 15px;
 	border-radius: 15px;
@@ -94,17 +98,17 @@ input {
 }
 .userlist::-webkit-scrollbar-track {
 	border-radius: 10px;
-	background-color: #202225;
+	background-color: #40444b;
 }
 
 .userlist::-webkit-scrollbar {
 	width: 10px;
-	background-color: #202225;
+	background-color: #40444b;
 }
 
 .userlist::-webkit-scrollbar-thumb {
 	border-radius: 10px;
-	background-color: #40444b;
+	background-color: black;
 }
 
 #deco {
@@ -137,8 +141,7 @@ input {
 	right: 0px;
 	height: 100vh;
 	width: 30vw;
-	border-left: 5px solid #ff7b00;
-	background: black;
+	background: #40444b;
 }
 
 .option-container {
