@@ -6,7 +6,7 @@ body {
 	font-size: 4vw;
 	color: #dcddd9;
 	background: #202225;
-	margin-top: 150px;
+	margin: 0px;
 }
 body::-webkit-scrollbar-track {
 	border-radius: 10px;
@@ -23,6 +23,10 @@ body::-webkit-scrollbar-thumb {
 	background-color: #40444b;
 }
 
+h1 {
+	margin: 0px;
+}
+
 input {
 	height: 5vh;
 	font-size: 3vw;
@@ -37,20 +41,39 @@ input {
 	outline: none;
 }
 
-#msg_input {
-	position: fixed;
-	left: 50%;
-	top: 0;
+#msg-input {
+	margin-top: 15px;
 	width: 85%;
-	margin: 25px 0px;
-	-moz-transform: translateX(-50%);
-	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%);
 }
 
-#pseudo_input {
-	display: block;
-	margin: 0px auto 25px;
+#pseudo-input {
+	margin-top: 20px;
+}
+
+.centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.msg-list {
+	height: 87vh;
+	overflow: auto;
+}
+.msg-list::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: #202225;
+}
+
+.msg-list::-webkit-scrollbar {
+	width: 10px;
+	background-color: #202225;
+}
+
+.msg-list::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: black;
 }
 
 .msg {
@@ -61,19 +84,68 @@ input {
 	border-radius: 15px;
 }
 
-#logout {
-	position: fixed;
-	left: 10px;
-	bottom: 10px;
+.user {
+	overflow-wrap: break-word;
+	background: #202225;
+	margin: 20px 15px;
+	padding: 25px 15px;
+	border-radius: 15px;
 }
 
-.log_btn:hover {
+.userlist {
+	height: 60vh;
+	overflow: auto;
+}
+.userlist::-webkit-scrollbar-track {
+	border-radius: 10px;
+	background-color: #40444b;
+}
+
+.userlist::-webkit-scrollbar {
+	width: 10px;
+	background-color: #40444b;
+}
+
+.userlist::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: black;
+}
+
+#deco {
+	position: absolute;
+	bottom: 30px;
+	margin: 0px auto;
+}
+
+#go-back {
+	position: absolute;
+	bottom: 120px;
+	margin: 0px auto;
+}
+
+.option-btn:hover {
 	cursor: pointer;
 }
 
-#login_div {
+.chat-container {
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	display: inline-block;
+	left: 0px;
+	height: 100vh;
+	width: 70vw;
+}
+
+.side-panel {
+	position: absolute;
+	display: inline-block;
+	right: 0px;
+	height: 100vh;
+	width: 30vw;
+	background: #40444b;
+}
+
+.option-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

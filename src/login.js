@@ -3,10 +3,10 @@
 function login(e) {
 	if (e.code === "Enter" && input.value !== "") {
 		sessionStorage.setItem("pseudo", input.value.trim());
-		document.location = "../public/chat.html";
+		document.location = "../public/chat.html?pseudo=all";
 	}
 }
 
-const input = document.querySelector("input[id='pseudo_input']");
+const input = document.querySelector("#pseudo-input");
 
 input.onkeydown = login;
