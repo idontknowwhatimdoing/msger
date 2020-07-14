@@ -12,18 +12,31 @@
 	<body>
 		<div class="chat-container">
 			<div class="msg-list">
-				<div id="last"></div>
+				<div id="last-msg"></div>
 			</div>
 			<input autofocus type="text" id="msg-input" spellcheck="false" />
 		</div>
-		<div class="userlist">
-			<img
-				src="../assets/logout.png"
-				alt="log out"
-				title="log out"
-				id="logout"
-				class="log-btn"
-			/>
+		<div class="side-panel">
+			<p>Users</p>
+			<div class="userlist">
+				<div id="last-user"></div>
+			</div>
+			<div class="option-container">
+				<img
+					src="../assets/go-back.png"
+					alt="go back"
+					title="go back to the chat room"
+					id="go-back"
+					class="option-btn"
+				/>
+				<img
+					src="../assets/deco.png"
+					alt="disconnect"
+					title="disconnect"
+					id="deco"
+					class="option-btn"
+				/>
+			</div>
 		</div>
 	</body>
 </html>

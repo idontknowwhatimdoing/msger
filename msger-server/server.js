@@ -5,10 +5,6 @@ function is_valid(pseudo) {
 	return pseudo !== "all";
 }
 
-function get_pseudo(client) {
-	for (const c of clients) if (c.sock === client) return c.pseudo;
-}
-
 function handle_msg(client, msg) {
 	if ("pseudo" in msg) {
 		if (is_valid(msg.pseudo)) {
@@ -18,25 +14,19 @@ function handle_msg(client, msg) {
 				client.write(Buffer.from(JSON.stringify({ pseudo: c.pseudo })));
 			clients.push({ sock: client, pseudo: msg.pseudo });
 		} else client.end(JSON.stringify({ error: "invalid pseudo" }));
-	} else if ("content" in msg && "dest" in msg) {
-		if (msg.dest === "all") {
+	} else if ("content" in msg && "from" in msg && "to" in msg) {
+		if (msg.to === "all") {
 			for (const c of clients)
 				c.sock.write(
-					Buffer.from(
-						JSON.stringify({ content: msg.content, author: get_pseudo(client) })
-					)
+					Buffer.from(JSON.stringify({ content: msg.content, author: msg.from }))
 				);
 		} else {
 			for (const c of clients)
-				if (c.pseudo === msg.dest)
+				if (c.pseudo === msg.to)
 					c.sock.write(
-						Buffer.from(
-							JSON.stringify({ content: msg.content, author: get_pseudo(client) })
-						)
+						Buffer.from(JSON.stringify({ content: msg.content, author: msg.from }))
 					);
-			client.write(
-				Buffer.from(JSON.stringify({ content: msg.content, author: get_pseudo(client) }))
-			);
+			client.write(Buffer.from(JSON.stringify({ content: msg.content, author: msg.from })));
 		}
 	}
 }
