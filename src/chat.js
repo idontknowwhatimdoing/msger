@@ -18,7 +18,7 @@ function display_message(msg) {
 function display_user(pseudo) {
 	let user_div = document.createElement("div");
 	user_div.innerText = pseudo;
-	user_div.className = "msg";
+	user_div.className = "user";
 	userlist.insertBefore(user_div, logout_img);
 }
 

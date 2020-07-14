@@ -76,6 +76,14 @@ input {
 	border-radius: 15px;
 }
 
+.user {
+	overflow-wrap: break-word;
+	background: #40444b;
+	margin: 20px 15px;
+	padding: 25px 15px;
+	border-radius: 15px;
+}
+
 #logout {
 	position: absolute;
 	bottom: 40px;
