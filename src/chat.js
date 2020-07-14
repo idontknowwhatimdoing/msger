@@ -32,6 +32,11 @@ function send_message(e) {
 function handle_msg(msg) {
 	if ("pseudo" in msg) display_user(msg.pseudo);
 	else if ("content" in msg && "author" in msg) display_message(msg);
+	else if ("error" in msg)
+		if (msg.error === "invalid pseudo") {
+			alert(msg.error);
+			logout();
+		}
 }
 
 let pseudo = sessionStorage.getItem("pseudo");

@@ -17,7 +17,7 @@ function handle_msg(client, msg) {
 			for (const c of clients)
 				client.write(Buffer.from(JSON.stringify({ pseudo: c.pseudo })));
 			clients.push({ sock: client, pseudo: msg.pseudo });
-		} else client.end();
+		} else client.end(JSON.stringify({ error: "invalid pseudo" }));
 	} else if ("content" in msg && "dest" in msg) {
 		if (msg.dest === "all") {
 			for (const c of clients)
