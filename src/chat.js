@@ -1,9 +1,5 @@
 "use strict";
 
-function debug() {
-	display_user("test");
-}
-
 function logout() {
 	sessionStorage.clear();
 	client.end();
@@ -63,7 +59,6 @@ const last_user = document.querySelector("#last-user");
 
 goback.onclick = go_back;
 deco.onclick = logout;
-userlist.onclick = debug;
 input.onkeydown = send_message;
 client.on("data", (data) => handle_msg(JSON.parse(data.toString())));
 client.on("error", (e) => console.error("error :", e));
